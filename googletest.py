@@ -65,26 +65,51 @@ for cell in cell_list:
     for multicam in multicam_trucks:
         # print "in the loop"
         if multicam in raw_encoder:
-            print "found %s at %s" % (multicam, home_team)
+            print "(For Multicam) found %s at %s" % (multicam, home_team)
             Current_Multicam = multicam
             current_Home_Team = home_team
-            
+
 # For Testing Purposes
 # print ("Cell List")
 # print cell_list
 # print ("The number of Rows %s" % (row_count))
-print "the Current Multicam is: %s" % Current_Multicam
-ip_multicam_row = ip_worksheet.row_values(1)
-print "IP ROW"
-print ip_multicam_row
-ip_row_count = 0
 
-for cell in ip_multicam_row:
-    print ("Currently %s at %s" % (Current_Multicam, cell))
-    if Current_Multicam in cell.lower():
-        print ("FOUND %s at %s" % (Current_Multicam, ip_row_count))
-        print ()
+print "the Current Multicam is: %s" % Current_Multicam
+ip_multicam_name_row = ip_worksheet.row_values(1)
+ip_schools_column = ip_worksheet.col_values(1)
+
+ip_column_count = 0
+# print "IP Column %s" % ip_schools_column
+for cell in ip_schools_column:
+    # print ("Currently %s at %s" % (current_Home_Team, cell))
+    ip_column_count = ip_column_count + 1
+    if current_Home_Team in cell.lower():
+        print ("Home Team FOUND %s at %s and Cell %s" % (current_Home_Team, ip_column_count, cell))
+        current_School_number = ip_column_count
+
+
+# ip_multicam_current_address = ip.worksheet.row_values()
+# print "IP ROW"
+# print ip_multicam_name_row
+ip_row_count = 0
+current_multicam_ip_count = 0
+# https://stackoverflow.com/questions/2972212/creating-an-empty-list-in-python
+ip_List = []
+
+for cell in ip_multicam_name_row:
     ip_row_count = ip_row_count + 1
+    # print ("Currently %s at %s" % (Current_Multicam, cell))
+    if Current_Multicam in cell.lower():
+        # print ("FOUND Current Multicam %s at %s" % (Current_Multicam, ip_row_count))
+        # ip_multicam_count = ip_multicam_count + 1
+        current_cell = ip_worksheet.cell(current_School_number, ip_row_count)
+        # print ("The Current Cell Value is: %s " % (current_cell))
+        # https://stackoverflow.com/questions/12894795/appending-list-but-error-nonetype-object-has-no-attribute-append
+        ip_List.append(current_cell.value)
+        current_multicam_ip_count = current_multicam_ip_count + 1
+print "Current Multicam IP Addresses"
+print (ip_List)
+
 
 # print ip_row_count
 # ip_multicam_column = ip_worksheet.col_values(ip_row_count)
