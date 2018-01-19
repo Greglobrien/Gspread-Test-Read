@@ -73,6 +73,8 @@ for cell in cell_list:
             # Current_Multicam = multicam
             # current_Home_Team = home_team
 
+
+
 # For Testing Purposes
 # print ("Cell List")
 # print cell_list
@@ -99,7 +101,7 @@ for index, Current_Multicam in enumerate(Todays_Multicam_list):
     # print "IP ROW"
     # print ip_multicam_name_row
     ip_row_count = 0
-    current_multicam_ip_count = 0
+    # current_multicam_ip_count = 0
     # https://stackoverflow.com/questions/2972212/creating-an-empty-list-in-python
     ip_List = []
 
@@ -113,7 +115,7 @@ for index, Current_Multicam in enumerate(Todays_Multicam_list):
             # print ("The Current Cell Value is: %s " % (current_cell))
             # https://stackoverflow.com/questions/12894795/appending-list-but-error-nonetype-object-has-no-attribute-append
             ip_List.append(current_cell.value)
-            current_multicam_ip_count = current_multicam_ip_count + 1
+            # current_multicam_ip_count = current_multicam_ip_count + 1
     print "Current Multicam IP Addresses"
     print (ip_List)
 
